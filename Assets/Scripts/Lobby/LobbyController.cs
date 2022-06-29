@@ -25,6 +25,11 @@ public class LobbyController : MonoBehaviour
     private List<PlayerListItem> PlayerListItems = new List<PlayerListItem>();
     public PlayerObjectController LocalPlayerController;
 
+    //Ready
+    public Button StartGameButton;
+    public Text ReadyButtonText;
+
+
     //Manager
 
     private CustomNetworkManager manager;
@@ -46,13 +51,63 @@ public class LobbyController : MonoBehaviour
         if(Instance == null) { Instance = this; }
     }
 
+    public void ReadyPlayer()
+    {
+        LocalPlayerController.ChangeReady();
+    }
+    public void UpdateButton()
+    {
+        if (LocalPlayerController.Ready)
+        {
+            ReadyButtonText.text = "Unready";
+        }
+        else
+        {
+            ReadyButtonText.text = "Ready";
+        }
+    }
+    public void CheckIfAllReady()
+    {
+        bool AllReady = false;
 
+        foreach (PlayerObjectController player in Manager.GamePlayers)
+        {
+            if (player.Ready)
+            {
+                AllReady = true;
+            }
+            else
+            {
+                AllReady = false;
+                break;
+            }
+        }
+
+        if (AllReady)
+        {
+            if (LocalPlayerController.PlayerIdNumber == 1)
+            {
+                StartGameButton.interactable = true;
+                StartGameButton.gameObject.SetActive(true);
+            }
+            else
+            {
+                StartGameButton.interactable = false;
+                
+            }
+        }
+        else
+        {
+            StartGameButton.interactable = false;
+            StartGameButton.gameObject.SetActive(false);
+
+        }
+    }
     public void UpdateLobbyName()
     {
         CurrentLobbyID = Manager.GetComponent<SteamLobby>().CurrentLobbyID;
         LobbyNameText.text = SteamMatchmaking.GetLobbyData(new CSteamID(CurrentLobbyID), "name");
     }
-
     public void UpdatePlayerList()
     {
         if (!PlayerItemCreated) { CreateHostPlayerItem(); } //Host
@@ -61,15 +116,11 @@ public class LobbyController : MonoBehaviour
         if (PlayerListItems.Count == Manager.GamePlayers.Count) { UpdatePlayerItem(); }
 
     }
-
     public void FindLocalPlayer()
     {
         LocalPlayerObject = GameObject.Find("LocalGamePlayer");
         LocalPlayerController = LocalPlayerObject.GetComponent<PlayerObjectController>();
     }
-
-
-
     public void CreateHostPlayerItem()
     {
         foreach (PlayerObjectController player in Manager.GamePlayers)
@@ -81,6 +132,7 @@ public class LobbyController : MonoBehaviour
             NewPlayerItemScript.PlayerName = player.PlayerName;
             NewPlayerItemScript.ConnectionID = player.ConnectionID;
             NewPlayerItemScript.PlayerSteamID = player.PlayerSteamID;
+            NewPlayerItemScript.Ready = player.Ready;
             NewPlayerItemScript.SetPlayerValues();
 
 
@@ -107,6 +159,7 @@ public class LobbyController : MonoBehaviour
                 NewPlayerItemScript.PlayerName = player.PlayerName;
                 NewPlayerItemScript.ConnectionID = player.ConnectionID;
                 NewPlayerItemScript.PlayerSteamID = player.PlayerSteamID;
+                NewPlayerItemScript.Ready = player.Ready;
                 NewPlayerItemScript.SetPlayerValues();
 
 
@@ -117,7 +170,6 @@ public class LobbyController : MonoBehaviour
             }
         }
     }
-
     public void UpdatePlayerItem()
     {
         foreach (PlayerObjectController player in Manager.GamePlayers)
@@ -127,10 +179,16 @@ public class LobbyController : MonoBehaviour
                 if (PlayerListItemScript.ConnectionID == player.ConnectionID)
                 {
                     PlayerListItemScript.PlayerName = player.PlayerName;
+                    PlayerListItemScript.Ready = player.Ready;
                     PlayerListItemScript.SetPlayerValues();
+                    if (player == LocalPlayerController)
+                    {
+                        UpdateButton();
+                    }
                 }
             }
         }
+        CheckIfAllReady();
     }
     public void RemovePlayerItem()
     {
