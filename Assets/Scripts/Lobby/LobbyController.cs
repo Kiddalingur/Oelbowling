@@ -215,5 +215,10 @@ public class LobbyController : MonoBehaviour
 
     }
 
+    public void StartGame(string SceneName)
+    {
+        LocalPlayerController.CanStartGame(SceneName);
+    }
+
 
 }
