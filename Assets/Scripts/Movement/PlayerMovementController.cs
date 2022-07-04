@@ -9,9 +9,7 @@ using UnityEngine.SceneManagement;
 public class PlayerMovementController : NetworkBehaviour
 {
 
-    /*
-    Another camera script test, delete if it does not work
-    */
+
     public float Sensitivity
     {
         get { return sensitivity; }
