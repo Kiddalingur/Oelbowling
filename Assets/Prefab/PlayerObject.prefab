@@ -265,7 +265,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8794444103068629646}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 551.49725, y: 330.64474, z: 291.244}
+  m_LocalPosition: {x: 0, y: 1, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -340,11 +340,17 @@ MonoBehaviour:
   syncInterval: 0.1
   sensitivity: 2
   yRotationLimit: 90
-  controller: {fileID: -8915508435054143770}
+  walkingSpeed: 7.5
+  runningSpeed: 11.5
+  jumpSpeed: 8
+  gravity: 20
+  Camera: {fileID: 7565448094692435672}
+  lookSpeed: 2
+  lookXLimit: 45
+  canMove: 1
   Speed: 10
   PlayerModel: {fileID: 7832012442596893301}
   mouseSensitivity: 1000
-  Camera: {fileID: 2351144967898277556}
   playerBody: {fileID: 5413619955868530245}
 --- !u!114 &4468401586172556381
 MonoBehaviour:
