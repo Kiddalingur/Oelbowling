@@ -16,6 +16,7 @@ public class PlayerObjectController : NetworkBehaviour
 
     private CustomNetworkManager manager;
 
+
     private CustomNetworkManager Manager
     {
         get
@@ -26,6 +27,12 @@ public class PlayerObjectController : NetworkBehaviour
             }
             return manager = CustomNetworkManager.singleton as CustomNetworkManager;
         }
+    }
+
+
+    private void Start()
+    {
+        DontDestroyOnLoad(this.gameObject);
     }
 
     private void PlayerReadyUpdate(bool oldValue, bool newValue)
@@ -41,11 +48,13 @@ public class PlayerObjectController : NetworkBehaviour
 
     }
 
+
     [Command]
     private void CmdSetPlayerReady()
     {
         this.PlayerReadyUpdate(this.Ready, !this.Ready);
     }
+
 
     public void ChangeReady()
     {
@@ -56,8 +65,6 @@ public class PlayerObjectController : NetworkBehaviour
     }
 
 
-
-
     public override void OnStartAuthority()
     {
         CmdSetPlayerName(SteamFriends.GetPersonaName().ToString());
@@ -66,6 +73,7 @@ public class PlayerObjectController : NetworkBehaviour
         LobbyController.Instance.UpdateLobbyName();
     }
 
+
     public override void OnStartClient()
     {
         Manager.GamePlayers.Add(this);
@@ -73,18 +81,19 @@ public class PlayerObjectController : NetworkBehaviour
         LobbyController.Instance.UpdatePlayerList();
     }
 
+
     public override void OnStopClient()
     {
         Manager.GamePlayers.Remove(this);
         LobbyController.Instance.UpdatePlayerList();
     }
 
+
     [Command]
     private void CmdSetPlayerName(string PlayerName)
     {
         this.PlayerNameUpdate(this.PlayerName, PlayerName);
     }
-
 
 
     public void PlayerNameUpdate(string OldValue, string NewValue)
@@ -97,6 +106,21 @@ public class PlayerObjectController : NetworkBehaviour
         {
             LobbyController.Instance.UpdatePlayerList();
         }
+    }
+
+
+    public void CanStartGame(string SceneName)
+    {
+        if (hasAuthority)
+        {
+            CmdCanStartGame(SceneName);
+        }
+    }
+
+    [Command] //Makes it run on every client connected?
+    public void CmdCanStartGame(string SceneName)
+    {
+        manager.StartGame(SceneName);
     }
 
 }

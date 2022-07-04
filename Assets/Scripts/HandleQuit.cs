@@ -2,6 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using Mirror;
+
 
 public class HandleQuit : MonoBehaviour
 {
@@ -12,6 +14,7 @@ public class HandleQuit : MonoBehaviour
     }
     public void ToMainMenu()
     {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex - 1);
+        //SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex - 1);
+        NetworkManager.singleton.ServerChangeScene("MainMenu");
     }
 }
