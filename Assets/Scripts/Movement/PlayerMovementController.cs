@@ -9,6 +9,8 @@ using UnityEngine.SceneManagement;
 public class PlayerMovementController : NetworkBehaviour
 {
 
+    private bool firstCursorLock = false;
+
 
     public float Sensitivity
     {
@@ -43,7 +45,6 @@ public class PlayerMovementController : NetworkBehaviour
     public GameObject PlayerModel;
 
     public float mouseSensitivity = 100f;
-    //public GameObject Camera;
 
     public Transform playerBody;
 
@@ -150,7 +151,11 @@ public class PlayerMovementController : NetworkBehaviour
 
         playerBody.transform.localRotation = xQuat * yQuat;
 
-
+        if (firstCursorLock == false)
+        {
+            Cursor.lockState = CursorLockMode.Locked;
+            firstCursorLock = true;
+        }
 
         // Can be changed into a scene changer to acces pausemenu
         if (Input.GetKeyDown(KeyCode.P) || Input.GetKeyDown(KeyCode.Escape))

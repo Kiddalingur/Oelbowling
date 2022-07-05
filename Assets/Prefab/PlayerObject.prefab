@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 98888071218142863}
   m_Layer: 0
-  m_Name: Destination
+  m_Name: RightHand
   m_TagString: PickUp
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -24,7 +24,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 39894826217722754}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0.958}
+  m_LocalPosition: {x: 0.81, y: 0, z: 0.958}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -158,8 +158,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3779042091129190624}
-  - component: {fileID: 5643630410212418103}
-  - component: {fileID: 3639268909796614862}
   m_Layer: 0
   m_Name: Player
   m_TagString: PickUp
@@ -184,38 +182,6 @@ Transform:
   m_Father: {fileID: 5413619955868530245}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &5643630410212418103
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7832012442596893301}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9b91ecbcc199f4492b9a91e820070131, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  sceneId: 0
-  serverOnly: 0
-  visible: 0
-  m_AssetId: 298e50dd25f61a346af3b9768d0038e9
-  hasSpawned: 0
---- !u!114 &3639268909796614862
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7832012442596893301}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c452c124b35fafd4c9190b4d0909c39b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  syncMode: 0
-  syncInterval: 0.1
-  PickUp: {fileID: 39894826217722754}
 --- !u!1 &8648209561031592562
 GameObject:
   m_ObjectHideFlags: 0
@@ -310,12 +276,13 @@ GameObject:
   - component: {fileID: 5413619955868530245}
   - component: {fileID: 5311976968532330010}
   - component: {fileID: 7735563373024857751}
+  - component: {fileID: -8915508435054143770}
   - component: {fileID: 7512333463211553326}
   - component: {fileID: 2667795623062744475}
   - component: {fileID: 4468401586172556381}
-  - component: {fileID: 8623320333760682621}
-  - component: {fileID: -8915508435054143770}
   - component: {fileID: 6356208871200532764}
+  - component: {fileID: 8185546904030638874}
+  - component: {fileID: 7171848952236924791}
   m_Layer: 0
   m_Name: PlayerObject
   m_TagString: Untagged
@@ -376,6 +343,24 @@ MonoBehaviour:
   PlayerSteamID: 0
   PlayerName: 
   Ready: 0
+--- !u!143 &-8915508435054143770
+CharacterController:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8794444103068629646}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Height: 2
+  m_Radius: 0.5
+  m_SlopeLimit: 45
+  m_StepOffset: 0.3
+  m_SkinWidth: 0.08
+  m_MinMoveDistance: 0.001
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!136 &7512333463211553326
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -452,42 +437,6 @@ MonoBehaviour:
   showGizmos: 0
   showOverlay: 0
   overlayColor: {r: 0, g: 0, b: 0, a: 0.5}
---- !u!114 &8623320333760682621
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8794444103068629646}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2e0fe5a36d735a7488a0c887e0eaed82, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  syncMode: 0
-  syncInterval: 0.1
-  mouseSensitivity: 1000
-  playerBody: {fileID: 5413619955868530245}
-  camClamp: 90
-  PlayerModel: {fileID: 7832012442596893301}
---- !u!143 &-8915508435054143770
-CharacterController:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8794444103068629646}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Height: 2
-  m_Radius: 0.5
-  m_SlopeLimit: 45
-  m_StepOffset: 0.3
-  m_SkinWidth: 0.08
-  m_MinMoveDistance: 0.001
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &6356208871200532764
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -517,3 +466,56 @@ MonoBehaviour:
   debugLog: 0
   statisticsGUI: 0
   statisticsLog: 0
+--- !u!114 &8185546904030638874
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8794444103068629646}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 734b48bea0b204338958ee3d885e11f0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  syncMode: 0
+  syncInterval: 0.1
+  clientAuthority: 1
+  sendInterval: 0.05
+  syncPosition: 1
+  syncRotation: 1
+  syncScale: 0
+  interpolatePosition: 1
+  interpolateRotation: 1
+  interpolateScale: 0
+  bufferTimeMultiplier: 1
+  bufferSizeLimit: 64
+  catchupThreshold: 4
+  catchupMultiplier: 0.1
+  onlySyncOnChange: 1
+  bufferResetMultiplier: 5
+  positionSensitivity: 0.01
+  rotationSensitivity: 0.01
+  scaleSensitivity: 0.01
+  showGizmos: 0
+  showOverlay: 0
+  overlayColor: {r: 0, g: 0, b: 0, a: 0.5}
+  target: {fileID: 98888071218142863}
+--- !u!114 &7171848952236924791
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8794444103068629646}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a5fb2ab0dfa03d8499d87ce4ab35605d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  syncMode: 0
+  syncInterval: 0.1
+  sceneObjectPrefab: {fileID: 3015961750756725203, guid: 838cff554fe6bd44092e6c34788224e5, type: 3}
+  rightHand: {fileID: 39894826217722754}
+  ballPrefab: {fileID: 1152201907799871119, guid: 73eaaa57a9991d34e982b7dc93d189ce, type: 3}
+  equippedItem: 0

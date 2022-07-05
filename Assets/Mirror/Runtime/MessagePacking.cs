@@ -144,5 +144,9 @@ namespace Mirror
             void Wrapped(C conn, T msg, int _) => handler(conn, msg);
             return WrapHandler((Action<C, T, int>) Wrapped, requireAuthentication);
         }
+
     }
+
+
 }
+

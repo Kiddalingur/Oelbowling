@@ -14,6 +14,8 @@ GameObject:
   - component: {fileID: 2257532645318552272}
   - component: {fileID: 1747835823299244505}
   - component: {fileID: -7425226742504369883}
+  - component: {fileID: 4553824370285029806}
+  - component: {fileID: 7033127937733489324}
   m_Layer: 0
   m_Name: Football
   m_TagString: Untagged
@@ -95,7 +97,7 @@ SphereCollider:
   m_GameObject: {fileID: 1152201907799871119}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 2
   m_Radius: 0.5
   m_Center: {x: 0, y: 0, z: 0}
@@ -127,3 +129,37 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1ffef504a091c7d438d61d9ee6f1a90a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  syncMode: 0
+  syncInterval: 0.1
+  football: {fileID: 0}
+--- !u!114 &4553824370285029806
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1152201907799871119}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9b91ecbcc199f4492b9a91e820070131, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sceneId: 0
+  serverOnly: 0
+  visible: 0
+  m_AssetId: 73eaaa57a9991d34e982b7dc93d189ce
+  hasSpawned: 0
+--- !u!64 &7033127937733489324
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1152201907799871119}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 1
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
