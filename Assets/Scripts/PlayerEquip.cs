@@ -17,6 +17,8 @@ public class PlayerEquip : NetworkBehaviour
     public GameObject ballPrefab;
 
 
+
+
     [SyncVar(hook = nameof(OnChangeEquipment))]
     public EquippedItem equippedItem;
 
@@ -52,9 +54,14 @@ public class PlayerEquip : NetworkBehaviour
             CmdChangeEquippedItem(EquippedItem.nothing);
         if (Input.GetKeyDown(KeyCode.Alpha2) && equippedItem != EquippedItem.ball)
             CmdChangeEquippedItem(EquippedItem.ball);
-        
+
+
+
+
         if (Input.GetKeyDown(KeyCode.X) && equippedItem != EquippedItem.nothing)
             CmdDropItem();
+
+
 
     }
 
@@ -101,10 +108,6 @@ public class PlayerEquip : NetworkBehaviour
         // Destroy the scene object
         NetworkServer.Destroy(sceneObject);
     }
-
-
-
-
 
 
 }

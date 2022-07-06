@@ -518,4 +518,5 @@ MonoBehaviour:
   sceneObjectPrefab: {fileID: 3015961750756725203, guid: 838cff554fe6bd44092e6c34788224e5, type: 3}
   rightHand: {fileID: 39894826217722754}
   ballPrefab: {fileID: 1152201907799871119, guid: 73eaaa57a9991d34e982b7dc93d189ce, type: 3}
+  playerCam: {fileID: 7565448094692435672}
   equippedItem: 0

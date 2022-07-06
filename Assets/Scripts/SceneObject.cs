@@ -50,6 +50,15 @@ public class SceneObject : NetworkBehaviour
         NetworkClient.localPlayer.GetComponent<PlayerEquip>().CmdPickupItem(gameObject);
     }
 
+
+    public void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.E))
+        {
+            NetworkClient.localPlayer.GetComponent<PlayerEquip>().CmdPickupItem(gameObject);
+        }
+    }
+
 }
 
 
